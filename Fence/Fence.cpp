@@ -1,53 +1,53 @@
-// Omar Vergara
-// 02/24/2024
-// Functions
-
 #include <iostream>
 #include <iomanip>
-#include <cmath>    
 #include <string>
+#include <cmath>
 
-using namespace std; // Added semicolon here
-           
+using namespace std;
+
 // Prototypes
-string getName(); 
-void printThings(string);
+string getName();
+void getAssignNames(string[]);
+void printIt(string, string[]);
 
+int main()
+{
+    string studentName;
+    string assignName[3];
 
-int main() {
-    
-    cout << "starting in Main" << endl; 
-    string myName; // to catch the name returned by the getName function
+    studentName = getName();
+    getAssignNames(assignName);
 
-    // function call 
-    myName = getName(); // call the getName fuction, expecting a string to return
-    cout << "Back in main" << endl;
+    // Call to print the results
+    printIt(studentName, assignName);
 
-    printThings(myName); 
-
-    cout << "Back in main" << endl; 
-
-    cout << myName << " is the name entered in the getName function. I'm back in main" << endl; 
-
-    
-    return 0; 
-
+    return 0;
 }
 
-// the getName function takes no params, returns a string variable containing
-// the name
 string getName()
 {
-    string name; 
-    cout << "In the getName function" << endl; 
-    cout << "Enter the name: "; 
+    string name;
+    cout << "Enter the student's first and last name: ";
     getline(cin, name);
-     return name; // this returns a copy of what lives in name
+    return name;
 }
 
-//printThings, takes a string and prints it out, returns nothing 
-void printThings(string name)
+void getAssignNames(string names[])
 {
-    cout << "In printThings function" << endl;
-    cout << " Here is your name " << name << endl; 
+    cout << "Enter the name of Assignment 1: ";
+    getline(cin, names[0]);
+
+    cout << "Enter the name of Assignment 2: ";
+    getline(cin, names[1]);
+
+    cout << "Enter the name of Assignment 3: ";
+    getline(cin, names[2]);
+}
+
+void printIt(string name, string assignments[])
+{
+    cout << "The student name is " << name << endl;
+    cout << "Assignment 1 is: " << assignments[0] << endl; // Corrected 'assignment' -> 'assignments'
+    cout << "Assignment 2 is: " << assignments[1] << endl;
+    cout << "Assignment 3 is: " << assignments[2] << endl;
 }
